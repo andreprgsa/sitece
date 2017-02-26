@@ -1,0 +1,14 @@
+<div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+     [ngClass]="{scrolled: isScrolled}">
+  <a routerLink="/pages/dashboard" class="al-logo clearfix"><span>CE</span> Wavestone</a>
+  <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+
+  <div class="user-profile clearfix">
+    <button class="btn btn-default" id="user-profile-pp" type="button">
+      <a href class="profile" routerLink="/dashboard"><i class="fa fa-user"></i>Dio</a>
+    </button>  
+    <button class="btn btn-danger" id="user-profile-dd" type="button">
+      <a href class="signout" (click)="auth.logout()"><i class="fa fa-power-off"></i> Déconnexion</a>
+    </button>     
+  </div>
+</div>
