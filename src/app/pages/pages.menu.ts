@@ -6,11 +6,37 @@ export const PAGES_MENU = [
         path: 'dashboard',
         data: {
           menu: {
+            title: 'Prénom NOM',
+            icon: 'ion-person',
+            selected: false,
+            expanded: false,
+            isUser: "sidebar-user",
+            order: 0,
+          }
+        }
+      },
+      {
+        path: 'dashboard',
+        data: {
+          menu: {
+            title: 'Déconnexion',
+            icon: 'ion-log-out',
+            selected: false,
+            expanded: false,
+            isLogout: "sidebar-logout",
+            order: 50
+          }
+        }
+      },
+      {
+        path: 'dashboard',
+        data: {
+          menu: {
             title: 'Accueil',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
-            order: 0
+            order: 100
           }
         }
       },
@@ -22,7 +48,7 @@ export const PAGES_MENU = [
             icon: 'ion-edit',
             selected: false,
             expanded: false,
-            order: 100,
+            order: 150,
           }
         },
         children: [

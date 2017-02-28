@@ -45,3 +45,26 @@ h1.al-title {
     font-size: 19px;
   }
 }
+
+a.collapse-menu-link {
+  font-size: 31px;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  line-height: 42px;
+  color: $sidebar-text;
+  padding: 0;
+  float: left;
+  margin: -25px 0 0 -25px;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+@media (max-width: $resXXS) {
+  a.collapse-menu-link {
+    margin-left: 10px;
+  }
+}
