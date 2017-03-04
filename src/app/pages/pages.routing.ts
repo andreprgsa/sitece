@@ -22,6 +22,11 @@ export const routes: Routes = [
     path: 'pages',
     component: Pages,
     children: [
+      { path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule' },
+      { path: 'events', loadChildren: 'app/pages/events/events.module#EventsModule' },
+      { path: 'clubs', loadChildren: 'app/pages/clubs/clubs.module#ClubsModule' },
+      { path: 'advantages', loadChildren: 'app/pages/advantages/advantages.module#AdvantagesModule' },
+      { path: 'about', loadChildren: 'app/pages/about/about.module#AboutModule' },
       { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'editors', loadChildren: 'app/pages/editors/editors.module#EditorsModule' },
       { path: 'components', loadChildren: 'app/pages/components/components.module#ComponentsModule' },

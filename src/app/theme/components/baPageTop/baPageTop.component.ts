@@ -12,6 +12,7 @@ import 'style-loader!./baPageTop.scss';
 })
 export class BaPageTop {
 
+  public isMenuCollapsed:boolean = false;
   public isScrolled:boolean = false;
  //Store profile object in auth class
   userProfile: Object;  
@@ -19,9 +20,18 @@ export class BaPageTop {
   constructor(private _state:GlobalState, private auth: Auth) {
     this.userProfile = JSON.parse(localStorage.getItem('profile')); 
     console.log("UP: " + this.userProfile);
+    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+      this.isMenuCollapsed = isCollapsed;
+    });      
   }
 
   public scrolledChanged(isScrolled) {
     this.isScrolled = isScrolled;
   }
+
+  public toggleMenu() {
+    this.isMenuCollapsed = !this.isMenuCollapsed;
+    this._state.notifyDataChanged('menu.isCollapsed', this.isMenuCollapsed);
+    return false;
+  }     
 }

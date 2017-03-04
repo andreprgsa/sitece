@@ -61,6 +61,7 @@ export class BaSidebar {
   }
 
   private _shouldMenuCollapse():boolean {
-    return window.innerWidth <= layoutSizes.resWidthCollapseSidebar;
+    //return window.innerWidth <= layoutSizes.resWidthCollapseSidebar;
+    return true;
   }
 }

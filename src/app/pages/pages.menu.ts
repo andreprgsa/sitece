@@ -3,7 +3,7 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'dashboard',
+        path: 'home',
         data: {
           menu: {
             title: 'Prénom NOM',
@@ -16,7 +16,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'dashboard',
+        path: 'home',
         data: {
           menu: {
             title: 'Déconnexion',
@@ -29,14 +29,74 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'dashboard',
+        path: 'home',
         data: {
           menu: {
             title: 'Accueil',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
+            order: 60
+          }
+        }
+      },
+      {
+        path: 'events',
+        data: {
+          menu: {
+            title: 'Evenements',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 80
+          }
+        }
+      },
+      {
+        path: 'clubs',
+        data: {
+          menu: {
+            title: 'Clubs',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 90
+          }
+        }
+      },
+      {
+        path: 'advantages',
+        data: {
+          menu: {
+            title: 'Avantages',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
             order: 100
+          }
+        }
+      },
+      {
+        path: 'about',
+        data: {
+          menu: {
+            title: 'Le CE Wavestone',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 110
+          }
+        }
+      },
+      {
+        path: 'dashboard',
+        data: {
+          menu: {
+            title: 'Dashboard',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 140
           }
         }
       },

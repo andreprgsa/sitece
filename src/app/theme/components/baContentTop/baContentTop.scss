@@ -47,15 +47,18 @@ h1.al-title {
 }
 
 a.collapse-menu-link {
-  font-size: 31px;
+  font-size: 16px;
   cursor: pointer;
   display: block;
-  text-decoration: none;
-  line-height: 42px;
+  //text-decoration: none;
+  line-height: 56px;
   color: $sidebar-text;
-  padding: 0;
+  padding: 0 5px 0 5px;
   float: left;
-  margin: -25px 0 0 -25px;
+  margin: -3px 0 0 -40px;
+  background-color: $wavestone-purple;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
 
   &:hover {
     text-decoration: none;
@@ -67,4 +70,12 @@ a.collapse-menu-link {
   a.collapse-menu-link {
     margin-left: 10px;
   }
+}
+
+@media (max-width: $resXXS) {
+
+  a.collapse-menu-link {
+    display: none;
+  }
+
 }

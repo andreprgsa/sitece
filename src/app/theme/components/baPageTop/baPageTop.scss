@@ -6,10 +6,11 @@
   position: fixed;
   z-index: 904;
   box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
-  height: 66px;
+  height: 0px;
   width: 100%;
   min-width: $resMin;
   padding: 0 32px 0 40px;
+  
 
   .dropdown-toggle::after {
     display: none;
@@ -18,7 +19,7 @@
 
 .blur {
   .page-top.scrolled {
-    background-color: rgba(black, 0.85)
+    background-color: rgba(black, 0.15)
   }
 }
 
@@ -151,6 +152,23 @@ a.refresh-data {
   }
 }
 
+a.collapse-menu-link-top {
+  font-size: 32px;
+  cursor: pointer;
+  display: none;
+  //text-decoration: none;
+  line-height: 36px;
+  color: $sidebar-text;
+  padding: 0;
+  float: left;
+  margin: 14px 0 0 0;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
 @media screen and (max-width: $resS) {
   .search {
     display: none;
@@ -160,6 +178,11 @@ a.refresh-data {
 @media screen and (max-width: $resXS) {
   .page-top {
     padding: 0 20px;
+    height: $top-height;
+  }
+
+  a.collapse-menu-link-top {
+    display: block;
   }
 }
 
