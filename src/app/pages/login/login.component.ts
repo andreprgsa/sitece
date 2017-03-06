@@ -1,16 +1,11 @@
 import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {Auth} from '../../auth.service';
 
 import 'style-loader!./login.scss';
-
-// Avoid name not found warnings
-declare var Auth0Lock: any;
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
-  providers: [ Auth ]
 })
 export class Login {
 
@@ -19,7 +14,7 @@ export class Login {
   public password:AbstractControl;
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder, private auth: Auth) {
+  constructor(fb:FormBuilder) {
     this.form = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -27,7 +22,6 @@ export class Login {
 
     this.email = this.form.controls['email'];
     this.password = this.form.controls['password'];
-    auth.login();
   }
 
   public onSubmit(values:Object):void {

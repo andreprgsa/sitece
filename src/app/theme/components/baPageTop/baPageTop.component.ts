@@ -1,14 +1,12 @@
 import {Component} from '@angular/core';
 
 import {GlobalState} from '../../../global.state';
-import {Auth} from '../../../auth.service';
 
 import 'style-loader!./baPageTop.scss';
 
 @Component({
   selector: 'ba-page-top',
-  templateUrl: './baPageTop.html',
-  providers: [ Auth ]
+  templateUrl: './baPageTop.html'
 })
 export class BaPageTop {
 
@@ -17,7 +15,7 @@ export class BaPageTop {
  //Store profile object in auth class
   userProfile: Object;  
 
-  constructor(private _state:GlobalState, private auth: Auth) {
+  constructor(private _state:GlobalState) {
     this.userProfile = JSON.parse(localStorage.getItem('profile')); 
     console.log("UP: " + this.userProfile);
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
