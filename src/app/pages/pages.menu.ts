@@ -3,7 +3,7 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'home',
+        path: 'profile',
         data: {
           menu: {
             title: 'Prénom NOM',

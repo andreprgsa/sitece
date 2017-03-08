@@ -24,6 +24,7 @@ export const routes: Routes = [
     children: [
       { path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule' },
       { path: 'events', loadChildren: 'app/pages/events/events.module#EventsModule' },
+      { path: 'profile', loadChildren: 'app/pages/profile/profile.module#ProfileModule' },      
       { path: 'clubs', loadChildren: 'app/pages/clubs/clubs.module#ClubsModule' },
       { path: 'advantages', loadChildren: 'app/pages/advantages/advantages.module#AdvantagesModule' },
       { path: 'about', loadChildren: 'app/pages/about/about.module#AboutModule' },

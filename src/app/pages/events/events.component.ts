@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
+import 'style-loader!./events.scss';
 
 @Component({
   selector: 'events',
-  template: `<strong>My page content here</strong>`
+  templateUrl: "./events.html"
 })
 export class EventsComponent {
   constructor() {}
