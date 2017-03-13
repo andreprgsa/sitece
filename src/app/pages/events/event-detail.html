@@ -1,34 +1,54 @@
-<ba-card title="{{event.title}}">
+<div *ngIf="event" class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10" style="border-style: solid;">
+		<br>
 		<div class="row">
-			<div class="col-md-4">
-				<div class="row">
-					<div class="col-md-6"><!--COULEUR-->
-		        <div *ngIf="event.eligibility.includes('b')">
+			<div class="col-md-8">
+	      	<h3>{{event.title}}</h3>
+	    </div>
+	    <div class="col-md-2">
+	      	<b>Lieu :</b> {{event.place}}
+	    </div>
+	    <div class="col-md-2">
+	      	<b>Date :</b> {{event.date}}
+	    </div>
+	  </div>
+	  <br><br>
+	  <div class="row">
+			<div class="col-md-6">
+	    	<img [src]="event.imgUrl" class="img-fluid" style="max-height:05%; max-width:90%; margin-left:auto; margin-right:auto">
+	    </div>
+	    <div class="col-md-6">
+	  		<div class="row"><!--COULEUR SPONSOR COUT-->
+	  			<div class="col-md-6">
+						<div *ngIf="event.eligibility.includes('b')">
 		      		<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
 		      	</div>
 						<div *ngIf="event.eligibility.includes('o')">
 							<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
 		      	</div>
-			    </div>
-			    <div class="col-md-6"><!--LIEU & DATE-->
-			    	<h3>Lieu</h3> {{event.place}}<br />
-			    	<h3>Date</h3> {{event.date}}
-			    </div>
+	      	</div>
+	      	<div class="col-md-6 justify-content-center">
+	      		<div class="row">
+	      			<b>Partenaire :</b> {{event.sponsor}}
+	  				</div>
+	  				<div class="row">
+	      			<b>Coût :</b> {{event.cost}} euros de participation !
+	    			</div>
+	      	</div>
 				</div>
-				<div class="row">
-	    		<b>Partenaire de l'évènement :</b> {{event.sponsor}}
-		    </div>
-		    <div class="row">
-		    	<b>Coût de l'évènement :</b> {{event.cost}}
-		    </div>
-		    <div class="row"><br /></div>
-				<div class="row">
-					<button class="btn" style="align:left;"><a href="#{{event.eventUrl}}">S'inscrire à l'évènement</a></button>
+				<br><br>
+				<div class="row"><!--DESCRIPTION-->
+					<div innerHtml={{event.description}}></div>
 				</div>
-			</div>
-			<div class="col-md-4" innerHtml={{event.description}}></div>
-			<div class="col-md-4">
-				<img [src]="event.imgUrl" class="img-fluid" style="max-height:6%; max-width:40%; margin-left:auto; margin-right:auto">
-			</div>
-		</div>
-	</ba-card>
+				<br><br>
+				<div class="row"><!--LIENS-->
+					<button class="btn" style="align:left;"><a href="#{{event.eventUrl}}">Page de l'évènement</a></button>
+					<button class="btn" style="align:left;"><a href="#{{event.contactUrl}}">Contact</a></button>
+				</div>
+	  	</div>
+  	</div>
+  	<br>
+	</div>
+	<div class="col-md-1"></div>
+</div>

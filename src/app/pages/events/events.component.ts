@@ -11,6 +11,8 @@ import {EventService} from './event.service';
 })
 export class EventsComponent implements OnInit{
   events: Event[];
+  selectedEvent: Event;
+
   constructor(private eventService: EventService) {}
 
   getEvents(): void {
@@ -19,5 +21,9 @@ export class EventsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getEvents();
+  }
+
+  onSelect(event: Event): void {
+    this.selectedEvent = event;
   }
 }

@@ -1,36 +1,12 @@
+<div class="row">
+	<h1>Evènements</h1>
+</div>
+<div class="row"><!--BARRE DE RECHERCHE-->
+</div>
+<div class="row"><!--BOUTONS FILTRE -->
+</div>
+
 <div *ngFor="let event of events">
-	<ba-card title="{{event.title}}">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="row">
-					<div class="col-md-6"><!--COULEUR-->
-		        <div *ngIf="event.eligibility.includes('b')">
-		      		<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
-		      	</div>
-						<div *ngIf="event.eligibility.includes('o')">
-							<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
-		      	</div>
-			    </div>
-			    <div class="col-md-6"><!--LIEU & DATE-->
-			    	<h3>Lieu</h3> {{event.place}}<br />
-			    	<h3>Date</h3> {{event.date}}
-			    </div>
-				</div>
-				<div class="row">
-	    		<b>Partenaire de l'évènement :</b> {{event.sponsor}}
-		    </div>
-		    <div class="row">
-		    	<b>Coût de l'évènement :</b> {{event.cost}}
-		    </div>
-		    <div class="row"><br /></div>
-				<div class="row">
-					<button class="btn" style="align:left;"><a href="#{{event.eventUrl}}">S'inscrire à l'évènement</a></button>
-				</div>
-			</div>
-			<div class="col-md-4" innerHtml={{event.description}}></div>
-			<div class="col-md-4">
-				<img [src]="event.imgUrl" class="img-fluid" style="max-height:6%; max-width:40%; margin-left:auto; margin-right:auto">
-			</div>
-		</div>
-	</ba-card>
+	<my-event-detail [event]="event"></my-event-detail>
+	<br><br>
 </div>
