@@ -1,10 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import 'style-loader!./events.scss';
+
+import {Event} from './event';
+import {EventService} from './event.service';
 
 @Component({
   selector: 'events',
-  templateUrl: "./events.html"
+  providers: [EventService],
+  templateUrl: 'events.html'
 })
-export class EventsComponent {
-  constructor() {}
+export class EventsComponent implements OnInit{
+  events: Event[];
+  constructor(private eventService: EventService) {}
+
+  getEvents(): void {
+    this.eventService.getEvents().then(events => this.events = events);
+  }
+
+  ngOnInit(): void {
+    this.getEvents();
+  }
 }
