@@ -1,0 +1,54 @@
+<div *ngIf="club">
+	<div id="{{club.id}}">
+		<div class="row">
+			<h3>{{club.title}}</h3>
+	  </div>
+	  <div class="row">
+			<div class="col-md-3">
+	      <ba-card title="Couleur">  
+	        <div *ngIf="club.eligibility.includes('b')">
+	      		<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+	      	</div>
+					<div *ngIf="club.eligibility.includes('o')">
+						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
+	      	</div>
+	      </ba-card>
+	    </div>
+	    <div class="col-md-6">
+	      <ba-card title="Description">  
+	        {{club.description}}
+	      </ba-card>
+	    </div>
+	    <div class="col-md-3">
+	      <ba-card title="Tarif adhésion">  
+	        {{club.cost}}
+	      </ba-card>
+	    </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<ba-card title="Contacter le club">
+					<form>
+					  <div class="form-group">
+					    <label for="input01">Objet du message</label>
+					    <input type="text" class="form-control" id="input01" placeholder="Objet">
+					  </div>
+					  <div class="form-group">
+					    <label for="textarea01">Message</label>
+					    <textarea placeholder="Message" class="form-control" id="textarea01"></textarea>
+					  </div>
+					  <div class="button-wrapper">
+						  <button type="submit button" class="btn btn-default">Envoyer message</button>
+					  </div>
+					</form>
+				</ba-card>
+			</div>
+			<div class="col-md-8">
+				<img [src]="club.imgUrl" class="img-fluid" style="max-height:6%; max-width:40%; margin-left:auto; margin-right:auto">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<button (click)="goBack()">Back</button>
+</div>

@@ -6,4 +6,5 @@ export class Club {
   cost: number;
   contactUrl: string;
   imgUrl: string;
+  category: string;
 }

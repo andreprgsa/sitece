@@ -8,4 +8,8 @@ export class ClubService {
   getClubs(): Promise<Club[]> {
     return Promise.resolve(CLUBS);
   }
+
+  getClub(id: number): Promise<Club> {
+    return this.getClubs().then(clubs => clubs.find(club => club.id === id));
+  }
 }

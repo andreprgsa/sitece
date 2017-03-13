@@ -3,9 +3,9 @@ import { Component, Input }   from '@angular/core';
 import { Club }      from './club';
 
 @Component({
-  selector: 'club-list',
-  template: ''
+  selector: 'my-club-detail',
+  templateUrl: 'club-detail.html'
 })
-export class ClubDetailComponent {
+export class ClubDetailComponent{
   @Input() club:Club;
 }

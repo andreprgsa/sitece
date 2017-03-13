@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 import {Club} from './club';
 import {ClubService} from './club.service';
@@ -11,7 +12,9 @@ import {ClubService} from './club.service';
 
 export class ClubsComponent implements OnInit{
 	clubs: Club[];
-  constructor(private clubService: ClubService) {}
+  selectedClub: Club;
+
+  constructor(private router: Router, private clubService: ClubService) {}
 
   getClubs(): void {
     this.clubService.getClubs().then(clubs => this.clubs = clubs);
@@ -19,6 +22,14 @@ export class ClubsComponent implements OnInit{
 
   ngOnInit(): void {
     this.getClubs();
+  }
+
+  onSelect(club: Club): void {
+    this.selectedClub = club;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedClub.id]);
   }
 
 }
