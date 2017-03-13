@@ -1,0 +1,78 @@
+<div class="row">
+	<button class="btn"><a data-toggle="tab" href="#kalideaPlatform">Plateforme Kalidea</a></button>
+	<button class="btn"><a data-toggle="tab" href="#otherServices">Autres services</a></button>
+</div>
+<div class="row"><p></p></div>
+<div class="row">
+	<div class="tab-content">
+	  <div id="kalideaPlatform" class="tab-pane fade in active">
+    	<div class="row">
+    		<div class="col-md-1">
+    		</div>
+	    	<div class="col-md-5">
+	    		<img src="http://www.kalidea-corporate.com/img/template/logo.jpg" style="align:center">
+    		</div>
+    		<div class="col-md-5">
+    			<div class="row">
+	    			<h3>Plateforme Kalidea</h3>
+  				</div>
+  				<div class="row">
+	    			<!--<div *ngIf="advantage.eligibility.includes('b')">
+	      			<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+	      		</div>
+						<div *ngIf="advantage.eligibility.includes('o')">
+							<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
+	      		</div>-->
+	    		</div>
+	    		<div class="row">
+	    			<p></p>
+	    			<p>Votre Comité d’Entreprise vous propose son programme de réduction KALIDEA pour vous permettre d’accéder à de nombreuses offres exclusives : places de cinémas, abonnements de sport, entrées de parcs, places de concerts et spectacles, abonnements presse, etc.</p>
+	    			<p>Bénéficiez ainsi soit :</p>
+						<ul>
+							<li>De réductions proposées directement par KALIDEA</li>
+							<li>De subvention de votre CE sur les articles subventionnés</li>
+						</ul>
+	    			<p>Tous les collaborateurs Wavestone SA bénéficient de la subvention selon les conditions suivantes :</p>
+						<ul>
+							<li>Pour les collaborateurs ayant moins de 7 mois d’ancienneté : <b>35€/exercice</b></li>
+							<li>Pour les collaborateurs ayant plus de 7 mois d’ancienneté : <b>70€/exercice</b></li>
+						</ul>
+	    		</div>
+    		</div>
+    		<div class="col-md-1">
+    		</div>
+	  	</div>
+	  	<div class= "row">
+  			<button class="btn" type="link" style="align:center"><a href="https://billetterie.kalidea.com/Login" target="_blank">Accès à la billeterie</a></button>
+  		</div>
+  	</div>
+	  <div id="otherServices" class="tab-pane fade">
+	    <div class="row">
+	   		<h3>Autres services</h3>
+	    </div>
+	    <div class="row">
+				  <div *ngFor="let advantage of advantages">
+				  	<ba-card>
+				  		<div class="row">
+				      	<h3>{{advantage.title}}</h3>
+				      </div>
+				      <div class="row">
+				      	<div *ngIf="advantage.eligibility.includes('b')">
+				      		<button class="btn disabled" style="background: #2B90F5" aria-disabled="true"></button>
+				      	</div>
+						<div *ngIf="advantage.eligibility.includes('o')">
+	    						<button class="btn disabled" style="background: #E28356" aria-disabled="true"></button>
+				      	</div>
+				      </div>
+				  		<div class="row">
+				  			<div innerHTML="{{advantage.description}}"></div>
+				      </div>
+				      <div class="row">
+				      	<button class="btn" type="link"><a href="{{advantage.contactUrl}}">Contact</a></button>
+				      </div>
+				  	</ba-card>
+			  	</div>
+	    </div>
+	  </div>
+	</div>
+</div>
