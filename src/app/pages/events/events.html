@@ -1,12 +1,46 @@
 <div class="row">
-	<h1>Evènements</h1>
+  <div class="col-md-12">
+    <ba-card baCardClass="banner-column-panel">
+      <div class="banner">
+        <div class="large-banner-wrapper">
+          <img src="{{ ( 'app/typography/banner.png' | baAppPicture ) }}" alt=""/>
+        </div>
+        <div class="banner-text-wrapper">
+          <div class="banner-text">
+            <h1>Evènements</h1>
+            <p>Retrouvez ici tous les évènements de votre CE !</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+      	<div class="row"><!--BARRE DE RECHERCHE-->
+      		<div class="col-md-12" style="display:flex; justify-content:center;">
+	      		<form class="navbar-form navbar-right inline-form">
+	            <div class="form-group">
+	          		<input type="search" class="input-sm form-control" placeholder="Recherche">
+	         			<button type="submit" class="btn btn-primary btn-sm">Chercher</button>
+	            </div>
+	          </form>
+          </div>
+				</div>
+				<div class="separator"></div>
+				<div class="row"><!--BOUTONS FILTRE -->
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-10" style="display:flex; justify-content:center;">
+						<button class="btn btn-tag">TAG 1</button>
+						<button class="btn btn-tag">TAG 2</button>
+						<button class="btn btn-tag">TAG 3</button>
+						<button class="btn btn-tag">TAG 4</button>
+					</div>
+					<div class="col-md-1">
+					</div>
+				</div>
+      </div>
+    </ba-card>
+  </div>
 </div>
-<div class="row"><!--BARRE DE RECHERCHE-->
-</div>
-<div class="row"><!--BOUTONS FILTRE -->
-</div>
-
 <div *ngFor="let event of events">
 	<my-event-detail [event]="event"></my-event-detail>
-	<br><br>
+	<br>
 </div>
