@@ -36,11 +36,32 @@ button.btn.btn-tag{
 }
 
 .event-sponsor-or-cost{
+	display: flex;
 	font-size: 13px;
-	text-align: left;
+	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	text-shadow: 1px 1px black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.event-tag{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.event-eligibility{
+	color: transparent;
+	font-size: 20px;
+	text-align: center;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  z-index: 1;
+  width: auto;
+  height: 10%;
+  margin-top: 15%;
 }
 
 .event-card {
@@ -49,11 +70,7 @@ button.btn.btn-tag{
   border-style: solid;
   margin-right: 10%;
   margin-left: 10%;
-}
-
-.event-tag{
-	text-align: center;
-	text-transform: uppercase;
+  z-index:0;
 }
 
 .row{
