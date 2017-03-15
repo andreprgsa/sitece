@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import 'style-loader!./clubs.scss';
 
 import {Club} from './club';
 import {ClubService} from './club.service';
@@ -7,7 +8,8 @@ import {ClubService} from './club.service';
 @Component({
   selector: 'clubs',
   providers: [ClubService],
-  templateUrl: 'clubs.html'
+  templateUrl: 'clubs.html',
+  styleUrls: ['clubs.scss']
 })
 
 export class ClubsComponent implements OnInit{

@@ -6,6 +6,7 @@ import { Club }      from './club';
   selector: 'my-club-detail',
   templateUrl: 'club-detail.html'
 })
+
 export class ClubDetailComponent{
   @Input() club:Club;
 }
