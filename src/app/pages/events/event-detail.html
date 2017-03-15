@@ -2,62 +2,78 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<ba-card>
+			<div class="event-card">
 				<br>
 				<div class="row">
 					<div class="col-md-8">
-			      	<h3>{{event.title}}</h3>
+			      	<div class="event-title">{{event.title}}</div>
 			    </div>
 			    <div class="col-md-2">
-			      	<b>Lieu :</b> {{event.place}}
+			      	<div class="event-place-or-date">{{event.place}}</div>
 			    </div>
 			    <div class="col-md-2">
-			      	<b>Date :</b> {{event.date}}
+			      	<div class="event-place-or-date">{{event.date}}</div>
 			    </div>
 			  </div>
-			  <br><br>
+			  <div class="separator"></div>
 			  <div class="row">
 					<div class="col-md-6">
-			    	<img [src]="event.imgUrl" class="img-fluid" style="max-height:05%; max-width:90%; margin-left:auto; margin-right:auto">
+			    	<img [src]="event.imgUrl" class="event-img">
 			    </div>
 			    <div class="col-md-6">
-			  		<div class="row"><!--COULEUR SPONSOR COUT-->
-			  			<div class="col-md-6">
-			  				<div [ngSwitch]="event.eligibility">
-			  					<div *ngSwitchCase="'b'">
-			  						<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+			    	<div class="event-description">
+				  		<div class="row"><!--COULEUR SPONSOR COUT-->
+				  			<div class="col-md-7">
+				  				<div [ngSwitch]="event.eligibility">
+				  					<div *ngSwitchCase="'b'">
+				  						<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+				  					</div>
+				  					<div *ngSwitchCase="'o'">
+				  						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
+				  					</div>
+				  					<div *ngSwitchCase="'bo'">
+											<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+				  						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
+				  					</div>
 			  					</div>
-			  					<div *ngSwitchCase="'o'">
-			  						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
-			  					</div>
-			  					<div *ngSwitchCase="'bo'">
-										<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
-			  						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
-			  					</div>
-		  					</div>
-			      	</div>
-			      	<div class="col-md-6">
-			      		<div class="row">
-			      			<b>Partenaire : </b> {{event.sponsor}}
-			  				</div>
-			  				<div class="row">
-			      			<b>Coût : </b> {{event.cost}} euros de participation !
-			    			</div>
-			      	</div>
-						</div>
-						<br><br>
-						<div class="row"><!--DESCRIPTION-->
-							<div innerHtml={{event.description}}></div>
-						</div>
-						<br><br>
-						<div class="row"><!--LIENS-->
-							<button class="btn" style="align:left;"><a href="#{{event.eventUrl}}">Page de l'évènement</a></button>
-							<button class="btn" style="align:left;"><a href="#{{event.contactUrl}}">Contact</a></button>
+				      	</div>
+				      	<div class="col-md-5">
+				      		<div class="row">
+				      			<div class="event-sponsor-or-cost"><b>Sponsored by : </b><br> {{event.sponsor}}</div>
+				  				</div>
+				  				<div *ngIf="event.cost>0">
+					  				<div class="row">
+					      			<div class="event-sponsor-or-cost"><b>Coût : </b><br> {{event.cost}} € de participation.</div>
+					    			</div>
+				    			</div>
+				      	</div>
+							</div>
+							<br><br>
+							<div class="row"><!--DESCRIPTION-->
+								<div innerHtml={{event.description}}></div>
+							</div>
+							<br><br>
+							<div class="row"><!--LIENS-->
+								<div class="col-md-2">
+								</div>
+								<div class="col-md-8">
+									<button class="btn" style="align:left;"><a href="#{{event.eventUrl}}">Page de l'évènement</a></button>
+									<button class="btn" style="align:left;"><a href="#{{event.contactUrl}}">Contact</a></button>
+								</div>
+								<div class="col-md-2">
+								</div>
+							</div>
 						</div>
 			  	</div>
 		  	</div>
 		  	<br>
-	  	</ba-card>
+		  	<div class="separator"></div>
+		  	<div class="row"><!--TAGS-->
+		  		<div class="col-md-12">
+		  			<div class="event-tag">ICI APPARAITRONT LES TAGS DE L'EVENEMENT.</div>
+	  			</div>
+		  	</div>
+	  	</div>
 		</div>
 		<div class="col-md-1"></div>
 	</div>

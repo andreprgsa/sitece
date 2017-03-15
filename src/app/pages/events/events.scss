@@ -5,10 +5,55 @@ button.btn.btn-tag{
 	margin-rigt:2%;
 }
 
-h3{
+.event-title{
+	font-size: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px black;
+}
+
+.event-place-or-date{
+	font-size: 15px;
+	text-align:justify;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px black;
+}
+
+.event-img{
+	max-height:5%;
+	max-width:100%;
+	margin-left:2%;
+	margin-right:2%;
 	display:flex;
-	justify-content:center;
 	align-items:center;
+}
+
+.event-description{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.event-sponsor-or-cost{
+	font-size: 13px;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px black;
+}
+
+.event-card {
+  color: #666666;
+  background-color: #ffffff;
+  border-style: solid;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.event-tag{
+	text-align: center;
+	text-transform: uppercase;
 }
 
 .row{
