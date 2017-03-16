@@ -1,10 +1,19 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { ClubsComponent } from './clubs.component';
 
+import { Clubs } from './clubs.component';
+//import { [nomDuClub] } from './components/[nomDuClub]/[nomDuClub].component';
+import { OverviewClubs } from './components/overviewClubs/overviewClubs.component';
+import { SoccerClubs } from './components/soccerClubs/soccerClubs.component';
+
+// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',
-    component: ClubsComponent
+    component: OverviewClubs,
+    children: [
+      //{ path: 'nomDuClub', component: [nomDuClub] },
+      { path: 'soccerClubs', component: SoccerClubs },
+    ]
   }
 ];
 

@@ -60,9 +60,19 @@ export const PAGES_MENU = [
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
-            order: 90
+            order: 600,
           }
-        }
+        },
+        children: [
+          {
+            path: 'soccerClubs',
+            data: {
+              menu: {
+                title: 'Club Soccer',
+              }
+            }
+          }
+        ]
       },
       {
         path: 'advantages',

@@ -1,10 +1,3 @@
 export class Club {
-  id: number;
-  eligibility: string;
-  title: string;
-  description: string;
-  cost: number;
-  contactUrl: string;
-  imgUrl: string;
-  category: string;
+  constructor(public id: number, public eligibility: string, public title: string, public description: string, public cost: number, public contactUrl: string, public imgUrl: string, public category: string){}
 }

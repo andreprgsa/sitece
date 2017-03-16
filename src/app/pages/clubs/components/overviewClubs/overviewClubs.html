@@ -1,0 +1,40 @@
+<div class="overview-clubs">
+  <div class="row">
+    <h2>Catégorie 1 - Sport</h2>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngFor="let club of clubs">
+        <div *ngIf="club.category.includes('Sport')">
+          <div class="col-md-2">
+
+              <div class="tile"  [class.selected]="club === selectedClub" (click)="onSelect(club)" [ngStyle]="{'background-image' : 'url('+club.imgUrl+')'}">
+                <div class="club-title">
+                  {{club.title}}
+                </div>
+              </div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <h2>Catégorie 2 - Culture</h2>
+  </div>
+  <br><br>
+  <div class="row">
+    <div *ngFor="let club of clubs">
+      <div *ngIf="club.category.includes('Culture')">
+        <div class="col-md-2">
+          <div class="tile"  [class.selected]="club === selectedClub" (click)="onSelect(club)" [ngStyle]="{'background-image' : 'url('+club.imgUrl+')'}">
+            <div class="club-title">
+              {{club.title}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

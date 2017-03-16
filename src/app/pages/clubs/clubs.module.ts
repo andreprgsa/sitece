@@ -1,19 +1,30 @@
 import { NgModule }      from '@angular/core';
-import { NgaModule } from '../../theme/nga.module';
 import { CommonModule }  from '@angular/common';
-import { ClubsComponent } from './clubs.component';
-import { ClubDetailComponent } from './club-detail.component';
-import { routing } from './clubs.routing';
+import { FormsModule } from '@angular/forms';
+import { NgaModule } from '../../theme/nga.module';
+
+import { routing }       from './clubs.routing';
+import { Clubs } from './clubs.component';
+//import { [nomDuClub] } from './components/[nomDuClub]/[nomDuClub].component';
+import { OverviewClubs } from './components/overviewClubs/overviewClubs.component';
+import { SoccerClubs } from './components/soccerClubs/soccerClubs.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     NgaModule,
     routing
   ],
   declarations: [
-    ClubsComponent,
-    ClubDetailComponent
-  ]
+    Clubs,
+    //[nomDuClub],
+    OverviewClubs,
+    SoccerClubs,
+  ]/*,
+  providers: [
+    BubbleMapsService,
+    LineMapsService
+  ]*/
 })
 export class ClubsModule {}

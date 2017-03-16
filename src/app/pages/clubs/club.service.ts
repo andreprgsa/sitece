@@ -10,6 +10,6 @@ export class ClubService {
   }
 
   getClub(id: number): Promise<Club> {
-    return this.getClubs().then(clubs => clubs.find(club => club.id === id));
+    return this.getClubs().then(clubs => clubs.find(club => club.id === +id));
   }
 }
