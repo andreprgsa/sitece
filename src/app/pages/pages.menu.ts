@@ -111,28 +111,6 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'editors',
-        data: {
-          menu: {
-            title: 'Editors',
-            icon: 'ion-edit',
-            selected: false,
-            expanded: false,
-            order: 150,
-          }
-        },
-        children: [
-          {
-            path: 'ckeditor',
-            data: {
-              menu: {
-                title: 'CKEditor',
-              }
-            }
-          }
-        ]
-      },
-      {
         path: 'components',
         data: {
           menu: {

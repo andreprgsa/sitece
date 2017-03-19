@@ -10,6 +10,8 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  */
 import { ENV_PROVIDERS } from './environment';
 import { routing } from './app.routing';
+import { AuthService } from './providers/auth/auth.service';
+import { AuthGuard } from './providers/auth/auth-guard.service';
 
 // App is our top level component
 import { App } from './app.component';
@@ -21,7 +23,9 @@ import { PagesModule } from './pages/pages.module';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  AuthGuard,
+  AuthService
 ];
 
 export type StoreType = {
