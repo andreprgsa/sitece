@@ -171,17 +171,7 @@ section#formHolder {
 .form form .CTA {
   margin-top: 30px;
 }
-.form form .CTA input {
-  font-size: 12px;
-  text-transform: uppercase;
-  padding: 5px 30px;
-  background: $info;
-  color: #fff;
-  border-radius: 30px;
-  margin-right: 20px;
-  border: none;
-  font-family: "Tahoma", sans-serif;
-}
+
 .form form .CTA a.switch {
   font-size: 13px;
   font-weight: 400;
@@ -189,6 +179,7 @@ section#formHolder {
   color: #bbbbbb;
   text-decoration: underline;
   transition: all 0.3s;
+  margin-left: 20px;
 }
 .form form .CTA a.switch:hover {
   color: $info;
