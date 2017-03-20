@@ -1,96 +1,98 @@
-<div class="container">
-   <section id="formHolder">
+<div class="login-page">
+  <div class="container">
+    <section id="formHolder">
 
-      <div class="row">
+        <div class="row">
 
-         <!-- Brand Box -->
-         <div class="col-sm-6 brand">
+          <!-- Brand Box -->
+          <div class="col-sm-6 brand">
 
-            <div class="heading">
-               <div class="col-xs-6 col-md-12">
-                 <img class="ce-logo" src="assets/img/theme/logo/ce-wavestone.png">
-                 </div>
-               <div class="col-xs-6 col-md-12">
-                 <img class="ce-logo" src="assets/img/theme/logo/ce-wavestone-advisors.png">
-                 </div>
-            </div>
-         </div>
-
-
-         <!-- Form Box -->
-         <div class="col-sm-6 form">
-
-            <!-- Login Form -->
-            <div class="login form-piece">
-               <form class="login-form" (ngSubmit)="loginSubmit()" #loginForm="ngForm">
-                  <div class="form-group">
-                     <label for="loginemail">Adresse mail</label>
-                     <input type="email" name="loginemail" id="loginemail" required [(ngModel)]="loginUser.email">
+              <div class="heading">
+                <div class="col-xs-6 col-md-12">
+                  <img class="ce-logo" src="assets/img/theme/logo/ce-wavestone.png">
                   </div>
-
-                  <div class="form-group">
-                     <label for="loginPassword">Mot de passe</label>
-                     <input type="password" name="loginPassword" id="loginPassword" required [(ngModel)]="loginUser.password">
+                <div class="col-xs-6 col-md-12">
+                  <img class="ce-logo" src="assets/img/theme/logo/ce-wavestone-advisors.png">
                   </div>
-
-                  <div class="CTA">
-                     <input type="submit" value="Login">
-                     <a href="#" class="switch">Je suis nouveau</a>
-                  </div>
-               </form>
-            </div><!-- End Login Form -->
+              </div>
+          </div>
 
 
-            <!-- Signup Form -->
-            <div class="signup form-piece switched">
-               <form class="signup-form" (ngSubmit)="registerSubmit()" #registerForm="ngForm">
+          <!-- Form Box -->
+          <div class="col-sm-6 form">
 
-                  <div class="form-group">
-                     <label for="name">Prénom</label>
-                     <input type="text" name="username" id="name" class="name" [(ngModel)]="registerUser.name">
-                     <span class="error"></span>
-                  </div>
+              <!-- Login Form -->
+              <div class="login form-piece">
+                <form class="login-form" (ngSubmit)="loginSubmit()" #loginForm="ngForm">
+                    <div class="form-group">
+                      <label for="loginemail">Adresse mail</label>
+                      <input type="email" name="loginemail" id="loginemail" required [(ngModel)]="loginUser.email">
+                    </div>
 
-                  <div class="form-group">
-                     <label for="name">Nom</label>
-                     <input type="text" name="surname" id="surname" class="surname" [(ngModel)]="registerUser.surname">
-                     <span class="error"></span>
-                  </div>
+                    <div class="form-group">
+                      <label for="loginPassword">Mot de passe</label>
+                      <input type="password" name="loginPassword" id="loginPassword" required [(ngModel)]="loginUser.password">
+                    </div>
 
-                  <div class="form-group">
-                     <label for="email">Adresse mail</label>
-                     <input type="email" name="emailAdress" id="email" class="email" [(ngModel)]="registerUser.email">
-                     <span class="error"></span>
-                  </div>
+                    <div class="CTA">
+                      <input type="submit" value="Login">
+                      <a href="#" class="switch">Je suis nouveau</a>
+                    </div>
+                </form>
+              </div><!-- End Login Form -->
 
-                  <div class="form-group select">
-                    <select class="form-control" id="practice" name="practice" required [(ngModel)]="registerUser.practice">
-                      <option *ngFor="let practice of practices" [value]="practice.acronym">{{practice.name}}</option>
-                    </select>
-                     <span class="error"></span>
-                  </div>                  
 
-                  <div class="form-group">
-                     <label for="password">Mot de passe</label>
-                     <input type="password" name="password" id="password" class="pass" [(ngModel)]="registerUser.password">
-                     <span class="error"></span>
-                  </div>
+              <!-- Signup Form -->
+              <div class="signup form-piece switched">
+                <form class="signup-form" (ngSubmit)="registerSubmit()" #registerForm="ngForm">
 
-                  <div class="form-group">
-                     <label for="passwordCon">Confirmer le mot de passe</label>
-                     <input type="password" name="passwordCon" id="passwordCon" class="passConfirm">
-                     <span class="error"></span>
-                  </div>
+                    <div class="form-group">
+                      <label for="name">Prénom</label>
+                      <input type="text" name="username" id="name" class="name" [(ngModel)]="registerUser.name">
+                      <span class="error"></span>
+                    </div>
 
-                  <div class="CTA">
-                     <input type="submit" value="Créer mon compte" id="submit">
-                     <a href="#" class="switch">J'ai déjà un compte</a>
-                  </div>
-               </form>
-            </div><!-- End Signup Form -->         
-         </div>
-      </div>
+                    <div class="form-group">
+                      <label for="name">Nom</label>
+                      <input type="text" name="surname" id="surname" class="surname" [(ngModel)]="registerUser.surname">
+                      <span class="error"></span>
+                    </div>
 
-   </section>
+                    <div class="form-group">
+                      <label for="email">Adresse mail</label>
+                      <input type="email" name="emailAdress" id="email" class="email" [(ngModel)]="registerUser.email">
+                      <span class="error"></span>
+                    </div>
 
+                    <div class="form-group select">
+                      <select class="form-control" id="practice" name="practice" required [(ngModel)]="registerUser.practice">
+                        <option *ngFor="let practice of practices" [value]="practice.acronym">{{practice.name}}</option>
+                      </select>
+                      <span class="error"></span>
+                    </div>                  
+
+                    <div class="form-group">
+                      <label for="password">Mot de passe</label>
+                      <input type="password" name="password" id="password" class="pass" [(ngModel)]="registerUser.password">
+                      <span class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="passwordCon">Confirmer le mot de passe</label>
+                      <input type="password" name="passwordCon" id="passwordCon" class="passConfirm">
+                      <span class="error"></span>
+                    </div>
+
+                    <div class="CTA">
+                      <input type="submit" value="Créer mon compte" id="submit">
+                      <a href="#" class="switch">J'ai déjà un compte</a>
+                    </div>
+                </form>
+              </div><!-- End Signup Form -->         
+          </div>
+        </div>
+
+    </section>
+
+  </div>
 </div>
