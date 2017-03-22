@@ -1,4 +1,4 @@
-@import '../../theme/sass/conf/conf';
+@import '../theme/sass/conf/conf';
 
 .login-page {
   height: 100vh;
@@ -26,7 +26,7 @@ h1 {
 }
 
 section#formHolder {
-  padding: 50px 0;
+  padding: 80px 0;
 }
 
 .brand {
@@ -34,7 +34,7 @@ section#formHolder {
   background-size: cover;
   background-position: center center;
   color: #fff;
-  min-height: 540px;
+  min-height: 580px;
   position: relative;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.6s cubic-bezier(1, -0.375, 0.285, 0.995);
@@ -80,7 +80,7 @@ section#formHolder {
 }
 .form .form-piece {
   background: #fff;
-  min-height: 480px;
+  min-height: 520px;
   margin-top: 30px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   color: #bbbbbb;
@@ -92,11 +92,13 @@ section#formHolder {
   width: 130%;
   overflow: hidden;
 }
+
 .form .form-piece.switched {
   transform: translateX(-100%);
   width: 100%;
   left: 0;
 }
+
 .form form {
   padding: 0 40px;
   margin: 0;
@@ -106,6 +108,13 @@ section#formHolder {
   left: 60%;
   transform: translate(-50%, -50%);
 }
+
+.form form .form-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .form form .form-group {
   margin-bottom: 5px;
   position: relative;

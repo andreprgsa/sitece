@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { LoginUser } from './login-model'
 import { RegisterUser } from './register-model'
-import { LoginService } from '../../providers/auth/login.service';
+import { LoginService } from '../providers/auth/login.service';
+import {Router} from '@angular/router';
 
 import 'style-loader!./login.scss';
 
@@ -27,20 +28,30 @@ export class Login {
   loginUser = new LoginUser("","");
   registerUser = new RegisterUser("","","",this.practices[0].acronym,"");
 
-  constructor(private login: LoginService) {
+  constructor(private loginService: LoginService, private router : Router) {
     System.import('./login.js');    
   }
 
-  public loginSubmit(values:Object):void {
+  public loginSubmit():void {
     this.loginSubmitted = true;
     if (this.validateForm('login')) {
-      console.log('login valid!')
       Promise.all([
-        this.login.login(this.loginUser)
-      ]).then(promiseReturn => {
-        console.log(promiseReturn[0]);
-      })       
+        this.loginService.login(this.loginUser)
+      ]).then(
+        data  => this.setUserLogin(data),
+        error =>  this.setUserLoginError(<any>error)
+      );       
     }
+  }
+
+  public setUserLogin(data) {
+    localStorage.setItem('id_token', JSON.stringify(data[0].token))
+    localStorage.setItem('user', JSON.stringify(data[0].user))
+    this.router.navigate(['/home']);
+  }
+
+  public setUserLoginError(error) {
+    console.log(error);
   }
 
   public registerSubmit(values:Object):void {

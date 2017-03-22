@@ -52,21 +52,12 @@ $(document).ready(function () {
         // Password
         if ($(this).hasClass('pass')) {
             if ($(this).val().length < 8) {
-                $(this).siblings('span.error').text('Ton mot de passe doit avoir au moins 8 charactères').fadeIn().parent('.form-group').addClass('hasError');
+                $(this).siblings('span.error').text('Il doit avoir au moins 8 charactères').fadeIn().parent('.form-group').addClass('hasError');
                 passwordError = true;
             } else {
                 $(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
                 passwordError = false;
             }
-        }
-
-        // PassWord confirmation
-        if ($('.pass').val() !== $('.passConfirm').val()) {
-            $('.passConfirm').siblings('.error').text('Les mots de passe ne correspondent pas').fadeIn().parent('.form-group').addClass('hasError');
-            passConfirm = false;
-        } else {
-            $('.passConfirm').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
-            passConfirm = false;
         }
 
         // label effect
