@@ -65,10 +65,34 @@ export const PAGES_MENU = [
         },
         children: [
           {
+            path: 'overviewClubs',
+            data: {
+              menu: {
+                title: 'Liste des clubs',
+              }
+            }
+          },
+          {
             path: 'soccerClubs',
             data: {
               menu: {
-                title: 'Club Soccer',
+                title: 'Club Soccer'
+              }
+            }
+          },
+          {
+            path: 'basketClubs',
+            data: {
+              menu: {
+                title: 'Club Basket'
+              }
+            }
+          },
+          {
+            path: 'handClubs',
+            data: {
+              menu: {
+                title: 'Club Hand'
               }
             }
           }

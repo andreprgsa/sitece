@@ -8,6 +8,8 @@ import { Clubs } from './clubs.component';
 //import { [nomDuClub] } from './components/[nomDuClub]/[nomDuClub].component';
 import { OverviewClubs } from './components/overviewClubs/overviewClubs.component';
 import { SoccerClubs } from './components/soccerClubs/soccerClubs.component';
+import { BasketClubs } from './components/basketClubs/basketClubs.component';
+import { HandClubs } from './components/handClubs/handClubs.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { SoccerClubs } from './components/soccerClubs/soccerClubs.component';
     //[nomDuClub],
     OverviewClubs,
     SoccerClubs,
+    BasketClubs,
+    HandClubs
   ]/*,
   providers: [
     BubbleMapsService,
