@@ -19,7 +19,7 @@ export const routes: Routes = [
   {
     path: 'pages',
     component: Pages,
-    children: [
+    /*children: [
       { path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule', canActivate: [AuthGuard] },
       { path: 'events', loadChildren: 'app/pages/events/events.module#EventsModule', canActivate: [AuthGuard] },
       { path: 'profile', loadChildren: 'app/pages/profile/profile.module#ProfileModule', canActivate: [AuthGuard] },      
@@ -33,8 +33,8 @@ export const routes: Routes = [
       { path: 'forms', loadChildren: 'app/pages/forms/forms.module#FormsModule', canActivate: [AuthGuard] },
       { path: 'tables', loadChildren: 'app/pages/tables/tables.module#TablesModule', canActivate: [AuthGuard] },
       { path: 'maps', loadChildren: 'app/pages/maps/maps.module#MapsModule', canActivate: [AuthGuard] }
-  ] 
-    /*children: [
+]*/
+  children: [
       { path: 'home', loadChildren: 'app/pages/home/home.module#HomeModule'},
       { path: 'events', loadChildren: 'app/pages/events/events.module#EventsModule'},
       { path: 'profile', loadChildren: 'app/pages/profile/profile.module#ProfileModule'},      
@@ -48,7 +48,7 @@ export const routes: Routes = [
       { path: 'forms', loadChildren: 'app/pages/forms/forms.module#FormsModule'},
       { path: 'tables', loadChildren: 'app/pages/tables/tables.module#TablesModule'},
       { path: 'maps', loadChildren: 'app/pages/maps/maps.module#MapsModule'}
-    ]*/
+    ]
   }
 ];
 
