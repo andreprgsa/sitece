@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
 
 @Injectable()
-export class LoginService {
+export class RegisterService {
   userData : any;
   private requestURL : string
 
@@ -13,13 +13,16 @@ export class LoginService {
   }
 
 
-  login (loginData): Promise<any> {
+  register (registerData): Promise<any> {
 
-    this.requestURL = 'http://api.ce-wavestone.fr/auth/login/'   
+    this.requestURL = 'http://api.ce-wavestone.fr/auth/register/'   
 
     let body = new URLSearchParams();
-    body.set('email', loginData.email);
-    body.set('password', loginData.password);  
+    body.set('email', registerData.email);
+    body.set('firstName', registerData.firstName);
+    body.set('lastName', registerData.lastName);
+    body.set('practice', registerData.practice);
+    body.set('password', registerData.password);  
 
     return this.http.post(this.requestURL, body)
               .toPromise()

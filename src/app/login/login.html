@@ -39,6 +39,7 @@
                       <button type="submit" class="btn btn-info btn-with-icon" value="Login"><i class="ion-android-checkmark-circle"></i>Login</button>
                       <a href="#" class="switch">Je suis nouveau</a>
                     </div>
+                    <div class="error-container"><p class="error" *ngIf="loginError">{{loginErrorMessage}}</p></div>
                 </form>
               </div><!-- End Login Form -->
 
@@ -49,13 +50,13 @@
                     <p class="form-title">Création de compte</p>
                     <div class="form-group">
                       <label for="name">Prénom</label>
-                      <input type="text" name="username" id="name" class="name" [(ngModel)]="registerUser.name">
+                      <input type="text" name="username" id="name" class="name" [(ngModel)]="registerUser.firstName">
                       <span class="error"></span>
                     </div>
 
                     <div class="form-group">
                       <label for="name">Nom</label>
-                      <input type="text" name="surname" id="surname" class="surname" [(ngModel)]="registerUser.surname">
+                      <input type="text" name="surname" id="surname" class="surname" [(ngModel)]="registerUser.lastName">
                       <span class="error"></span>
                     </div>
 
@@ -82,6 +83,7 @@
                       <button type="submit" class="btn btn-info btn-with-icon" id="submit"><i class="ion-android-create"></i>Créer</button>
                       <a href="#" class="switch">J'ai déjà un compte</a>
                     </div>
+                    <div class="error-container"><p class="error" *ngIf="registerError">{{registerErrorMessage}}</p></div>
                 </form>
               </div><!-- End Signup Form -->         
           </div>

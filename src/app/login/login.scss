@@ -194,6 +194,15 @@ section#formHolder {
   color: $info;
 }
 
+.form form .error-container {
+  margin-top: 10px;
+  height: 12px;
+  & .error {
+    margin-bottom: 0px;
+    color: $danger;
+  }
+}
+
 footer {
   text-align: center;
 }

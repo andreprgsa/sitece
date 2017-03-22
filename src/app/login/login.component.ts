@@ -3,6 +3,7 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 import { LoginUser } from './login-model'
 import { RegisterUser } from './register-model'
 import { LoginService } from '../providers/auth/login.service';
+import { RegisterService } from '../providers/auth/register.service';
 import {Router} from '@angular/router';
 
 import 'style-loader!./login.scss';
@@ -10,12 +11,15 @@ import 'style-loader!./login.scss';
 @Component({
   selector: 'login',
   templateUrl: './login.html',
-  providers: [LoginService]
+  providers: [LoginService, RegisterService]
 })
 export class Login {
-  public loginSubmitted:boolean = false;
-  public registerSubmitted:boolean = false;
-  private authToken:string = ""
+  public loginSubmitted:boolean = false
+  public registerSubmitted:boolean = false
+  public loginError:boolean = false
+  public loginErrorMessage:string
+  public registerError:boolean = false
+  public registerErrorMessage:string
 
   practices = [
     {acronym: "label", name: "Practice ou Bureau"},
@@ -28,7 +32,7 @@ export class Login {
   loginUser = new LoginUser("","");
   registerUser = new RegisterUser("","","",this.practices[0].acronym,"");
 
-  constructor(private loginService: LoginService, private router : Router) {
+  constructor(private loginService: LoginService, private registerService: RegisterService, private router : Router) {
     System.import('./login.js');    
   }
 
@@ -38,28 +42,70 @@ export class Login {
       Promise.all([
         this.loginService.login(this.loginUser)
       ]).then(
-        data  => this.setUserLogin(data),
-        error =>  this.setUserLoginError(<any>error)
+        data  => this.treatUserLogin(data[0]),
+        error => this.setError(<any>error)
       );       
     }
   }
 
-  public setUserLogin(data) {
-    localStorage.setItem('id_token', JSON.stringify(data[0].token))
-    localStorage.setItem('user', JSON.stringify(data[0].user))
-    this.router.navigate(['/home']);
+  public treatUserLogin(data) {
+    switch(Number(data.status)){
+      case 200:
+        localStorage.setItem('id_token', JSON.stringify(data.token))
+        localStorage.setItem('user', JSON.stringify(data.user))
+        this.router.navigate(['/home']);
+        break;
+      case 401:
+        this.loginError = true
+        this.loginErrorMessage = "Email et/ou mot de passe incorrect !"
+        break;
+      case 0:
+        this.loginError = true
+        this.loginErrorMessage = "Le service API CE Wavestone semble être hors-ligne..."
+        break;
+      default:
+        this.loginError = true
+        this.loginErrorMessage = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        break;
+    }
   }
 
-  public setUserLoginError(error) {
+  public setError(error:any) {
+    console.log("error !")
     console.log(error);
   }
 
-  public registerSubmit(values:Object):void {
+  public registerSubmit():void {
     this.registerSubmitted = true;
     if (this.validateForm('register')) {
-      console.log('register valid!')
-      // your code goes here
-      // console.log(values);
+      Promise.all([
+        this.registerService.register(this.registerUser)
+      ]).then(
+        data  => this.treatUserRegister(data[0]),
+        error => this.setError(<any>error)
+      );   
+    }
+  }
+
+  public treatUserRegister(data) {
+    console.log(data)
+    switch(Number(data.status)){
+      case 201:
+        this.registerError = true
+        this.registerErrorMessage = "Compte crée avec succès ! Vérifie tes mails pour la valider :)"
+        break;
+      case 422:
+        this.registerError = true
+        this.registerErrorMessage = JSON.parse(data._body).error
+        break;
+      case 0:
+        this.registerError = true
+        this.registerErrorMessage = "Le service API CE Wavestone semble être hors-ligne..."
+        break;
+      default:
+        this.registerError = true
+        this.registerErrorMessage = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        break;
     }
   }
 
@@ -79,7 +125,7 @@ export class Login {
           errorFlag = true
         if(this.registerUser.password === "")
           errorFlag = true
-        if(this.registerUser.name === "" || this.registerUser.surname === "")
+        if(this.registerUser.firstName === "" || this.registerUser.lastName === "")
           errorFlag = true
         if(this.registerUser.practice === "label")
           errorFlag = true
