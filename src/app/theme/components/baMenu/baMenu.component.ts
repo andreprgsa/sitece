@@ -95,7 +95,7 @@ export class BaMenu {
 
   public logoutUser($event) {
     localStorage.clear()
-    this._router.navigate(['login']);
+    this._router.navigate(['/login']);
   }
 
 }
