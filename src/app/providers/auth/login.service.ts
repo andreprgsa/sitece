@@ -15,7 +15,7 @@ export class LoginService {
 
   login (loginData): Promise<any> {
 
-    this.requestURL = 'http://api.ce-wavestone.fr/auth/login/'   
+    this.requestURL = 'https://api.ce-wavestone.fr/auth/login/'   
 
     let body = new URLSearchParams();
     body.set('email', loginData.email);

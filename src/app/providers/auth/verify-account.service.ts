@@ -15,7 +15,7 @@ export class VerifyAccountService {
 
   verifyAccount (token): Promise<any> {
 
-    this.requestURL = 'http://api.ce-wavestone.fr/auth/verify-account/' + token    
+    this.requestURL = 'https://api.ce-wavestone.fr/auth/verify-account/' + token    
 
     return this.http.post(this.requestURL, "")
               .toPromise()

@@ -136,7 +136,7 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
     "server:dev:hmr": "npm run server:dev -- --inline --hot",
-    "server:prod": "http-server dist -a 178.32.124.254 -p 443 -S -C /etc/letsencrypt/live/preproduction.ce-wavestone.fr/cert.pem -K /etc/letsencrypt/live/preproduction.ce-wavestone.fr/key.pem -c-1 --cors > ../http.log 2>&1 &",
+    "server:prod": "http-server dist -a 178.32.124.254 -p 443 -S -C /etc/letsencrypt/live/preproduction.ce-wavestone.fr/cert.pem -K /etc/letsencrypt/live/preproduction.ce-wavestone.fr/privkey.pem -c-1 --cors > ../http.log 2>&1 &",
     "server:test": "http-server dist-demo -c-1 --cors",
     "server:prod:ci": "http-server dist -p 3000 -c-1 --cors",
     "webdriver:update": "npm run webdriver-manager update",

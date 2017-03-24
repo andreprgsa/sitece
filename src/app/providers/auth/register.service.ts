@@ -15,7 +15,7 @@ export class RegisterService {
 
   register (registerData): Promise<any> {
 
-    this.requestURL = 'http://api.ce-wavestone.fr/auth/register/'   
+    this.requestURL = 'https://api.ce-wavestone.fr/auth/register/'   
 
     let body = new URLSearchParams();
     body.set('email', registerData.email);
