@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'clubs',
-  templateUrl: 'clubs.html'
+  template: '<router-outlet></router-outlet>'
 })
 export class Clubs {
 

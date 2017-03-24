@@ -26,7 +26,8 @@ export class OverviewClubs implements OnInit{
 
   onSelect(club: Club): void {
     this.selectedClub = club;
-    this.router.navigate(['/soccerClubs']);
+    //this.router.navigate(['/soccerClubs']);
+    this.router.navigate(['/overviewClubs']);
   }
 
 }
