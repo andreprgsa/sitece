@@ -23,7 +23,7 @@
 
               <!-- Login Form -->
               <div class="login form-piece">
-                <form class="login-form" (ngSubmit)="loginSubmit()" #loginForm="ngForm">
+                <form class="login-form" (ngSubmit)="loginSubmit()" #loginForm="ngForm" [hidden]="loginOrPassReset != 'login'">
                     <p class="form-title">Accès au site</p>
                     <div class="form-group">
                       <label for="loginemail">Adresse mail</label>
@@ -37,9 +37,24 @@
 
                     <div class="CTA">
                       <button type="submit" class="btn btn-info btn-with-icon" value="Login"><i class="ion-android-checkmark-circle"></i>Login</button>
-                      <a href="#" class="switch">Je suis nouveau</a>
+                      <a href="#" class="switch" (click)="registerForm.reset(); loginForm.reset(); resetPasswordForm.reset()">Je suis nouveau</a>
+                      <a href="#" class="switch-mdp" (click)="switchLoginForm()">Mot de passe oublié</a>
                     </div>
-                    <div class="error-container"><p class="error" *ngIf="loginError">{{loginErrorMessage}}</p></div>
+                    <div class="error-container"><p [ngClass]="messageType" *ngIf="messageTarget == 'login'">{{messageContent}}</p></div>
+                </form>
+
+                <form class="reset-password-form" (ngSubmit)="resetPasswordSubmit()" #resetPasswordForm="ngForm" [hidden]="loginOrPassReset != 'passReset'">
+                    <p class="form-title">Réinitialiser mon mot de passe</p>
+                    <div class="form-group">
+                      <label for="loginemail">Adresse mail</label>
+                      <input type="email" name="loginemail" id="loginemail" required [(ngModel)]="resetPasswordEmail">
+                    </div>
+
+                    <div class="CTA">
+                      <button type="submit" class="btn btn-warning btn-with-icon" value="ResetPassword"><i class="ion-android-checkmark-circle"></i>Réinitialiser</button>
+                      <a href="#" class="switch-mdp" (click)="switchLoginForm(); registerForm.reset(); loginForm.reset(); resetPasswordForm.reset()">Annuler</a>
+                    </div>
+                    <div class="error-container"><p [ngClass]="messageType" *ngIf="messageTarget == 'reset-password'">{{messageContent}}</p></div>
                 </form>
               </div><!-- End Login Form -->
 
@@ -81,9 +96,9 @@
 
                     <div class="CTA">
                       <button type="submit" class="btn btn-info btn-with-icon" id="submit"><i class="ion-android-create"></i>Créer</button>
-                      <a href="#" class="switch">J'ai déjà un compte</a>
+                      <a href="#" class="switch" (click)="registerForm.reset(); loginForm.reset(); resetPasswordForm.reset()">J'ai déjà un compte</a>
                     </div>
-                    <div class="error-container"><p class="error" *ngIf="registerError">{{registerErrorMessage}}</p></div>
+                    <div class="error-container"><p [ngClass]="messageType" *ngIf="messageTarget == 'register'">{{messageContent}}</p></div>
                 </form>
               </div><!-- End Signup Form -->         
           </div>

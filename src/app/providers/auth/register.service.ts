@@ -31,9 +31,8 @@ export class RegisterService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
-    return body || { };
-  
+    let serverResponse = {status: res.status, body: res.json()}
+    return serverResponse; 
 }
 
   private handleError (error: Response | any) {

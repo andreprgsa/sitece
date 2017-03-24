@@ -174,6 +174,7 @@ section#formHolder {
   right: 0;
   display: none;
 }
+
 .form form input[type=password] {
   color: $info;
 }
@@ -181,15 +182,18 @@ section#formHolder {
   margin-top: 30px;
 }
 
-.form form .CTA a.switch {
-  font-size: 13px;
-  font-weight: 400;
-  font-family: "Tahoma", sans-serif;
-  color: #bbbbbb;
-  text-decoration: underline;
-  transition: all 0.3s;
-  margin-left: 20px;
+.form form .CTA{
+  a.switch, a.switch-mdp {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Tahoma", sans-serif;
+    color: #bbbbbb;
+    text-decoration: underline;
+    transition: all 0.3s;
+    margin-left: 10px;
+  }
 }
+
 .form form .CTA a.switch:hover {
   color: $info;
 }
@@ -200,6 +204,10 @@ section#formHolder {
   & .error {
     margin-bottom: 0px;
     color: $danger;
+  }
+  & .success {
+    margin-bottom: 0px;
+    color: $success;
   }
 }
 

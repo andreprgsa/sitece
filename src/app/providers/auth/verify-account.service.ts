@@ -5,31 +5,27 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
 
 @Injectable()
-export class LoginService {
-  userData : any;
+export class VerifyAccountService {
+
   private requestURL : string
 
   constructor(public http: Http) {
   }
 
 
-  login (loginData): Promise<any> {
+  verifyAccount (token): Promise<any> {
 
-    this.requestURL = 'http://api.ce-wavestone.fr/auth/login/'   
+    this.requestURL = 'http://api.ce-wavestone.fr/auth/verify-account/' + token    
 
-    let body = new URLSearchParams();
-    body.set('email', loginData.email);
-    body.set('password', loginData.password);  
-
-    return this.http.post(this.requestURL, body)
+    return this.http.post(this.requestURL, "")
               .toPromise()
               .then(this.extractData)
               .catch(this.handleError);
   }
 
   private extractData(res: Response) {
-    let body = {status: res.status, body: res.json()}
-    return body || { };
+    let serverResponse = {status: res.status, body: res.json()}
+    return serverResponse;
   
 }
 

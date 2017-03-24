@@ -4,7 +4,7 @@ import { LoginUser } from './login-model'
 import { RegisterUser } from './register-model'
 import { LoginService } from '../providers/auth/login.service';
 import { RegisterService } from '../providers/auth/register.service';
-import {Router} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import 'style-loader!./login.scss';
 
@@ -16,10 +16,14 @@ import 'style-loader!./login.scss';
 export class Login {
   public loginSubmitted:boolean = false
   public registerSubmitted:boolean = false
-  public loginError:boolean = false
-  public loginErrorMessage:string
-  public registerError:boolean = false
-  public registerErrorMessage:string
+  public loginOrPassReset:string = "login"
+  public routingMessage:string
+
+  //TODO rationaliser
+  public messageType:string
+  public messageContent:string
+  public messageTarget:string
+  public resetPasswordEmail:string = null
 
   practices = [
     {acronym: "label", name: "Practice ou Bureau"},
@@ -32,8 +36,30 @@ export class Login {
   loginUser = new LoginUser("","");
   registerUser = new RegisterUser("","","",this.practices[0].acronym,"");
 
-  constructor(private loginService: LoginService, private registerService: RegisterService, private router : Router) {
+  constructor(private loginService: LoginService, private registerService: RegisterService, private router : Router, private activatedRoute: ActivatedRoute) {
     System.import('./login.js');    
+  }
+
+  ngOnInit(){
+    // subscribe to router event
+    this.activatedRoute.params.subscribe((params: Params) => {
+        this.routingMessage = params['message'];
+      });
+
+    switch(this.routingMessage){
+      case "OK":
+          this.messageTarget = 'login'
+          this.messageType = 'success'
+          this.messageContent = "Ton compte a été validé ! Tu peux désormais te connecter au site"        
+        break;
+      case "KO":
+          this.messageTarget = 'login'
+          this.messageType = 'error'
+          this.messageContent = "Erreur de validation de ton compte - contacte l'équipe du Site CE !"        
+        break;
+      default:
+        break;
+    }
   }
 
   public loginSubmit():void {
@@ -51,21 +77,29 @@ export class Login {
   public treatUserLogin(data) {
     switch(Number(data.status)){
       case 200:
-        localStorage.setItem('id_token', JSON.stringify(data.token))
-        localStorage.setItem('user', JSON.stringify(data.user))
-        this.router.navigate(['/home']);
+        localStorage.setItem('id_token', JSON.stringify(data.body.token))
+        localStorage.setItem('user', JSON.stringify(data.body.user))
+        this.router.navigate(['/pages/home']);
         break;
       case 401:
-        this.loginError = true
-        this.loginErrorMessage = "Email et/ou mot de passe incorrect !"
+        this.messageTarget = 'login'
+        this.messageType = 'error'
+        this.messageContent = "Email et/ou mot de passe incorrect !"
+        break;
+      case 403:
+        this.messageTarget = 'login'
+        this.messageType = 'error'
+        this.messageContent = "Ton compte n'a pas encore été validé !"
         break;
       case 0:
-        this.loginError = true
-        this.loginErrorMessage = "Le service API CE Wavestone semble être hors-ligne..."
+        this.messageTarget = 'login'
+        this.messageType = 'error'
+        this.messageContent = "Le service API CE Wavestone semble être hors-ligne..."
         break;
       default:
-        this.loginError = true
-        this.loginErrorMessage = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        this.messageTarget = 'login'
+        this.messageType = 'error'
+        this.messageContent = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
         break;
     }
   }
@@ -88,23 +122,26 @@ export class Login {
   }
 
   public treatUserRegister(data) {
-    console.log(data)
     switch(Number(data.status)){
-      case 201:
-        this.registerError = true
-        this.registerErrorMessage = "Compte crée avec succès ! Vérifie tes mails pour la valider :)"
+      case 201: //does not work !
+        this.messageTarget = 'register'
+        this.messageType = 'success'
+        this.messageContent = "Compte crée avec succès ! Vérifie tes mails pour le valider :)"
         break;
       case 422:
-        this.registerError = true
-        this.registerErrorMessage = JSON.parse(data._body).error
+        this.messageTarget = 'register'
+        this.messageType = 'error'
+        this.messageContent = JSON.parse(data._body).message
         break;
       case 0:
-        this.registerError = true
-        this.registerErrorMessage = "Le service API CE Wavestone semble être hors-ligne..."
+        this.messageTarget = 'register'
+        this.messageType = 'error'
+        this.messageContent = "Le service API CE Wavestone semble être hors-ligne..."
         break;
       default:
-        this.registerError = true
-        this.registerErrorMessage = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        this.messageTarget = 'register'
+        this.messageType = 'error'
+        this.messageContent = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
         break;
     }
   }
@@ -137,5 +174,11 @@ export class Login {
     }
   }
 
-  get diagnostic() { return JSON.stringify(this.registerUser); }
+  public resetPasswordSubmit(){
+
+  }
+
+  public switchLoginForm(){
+    this.loginOrPassReset = this.loginOrPassReset == "login" ? "passReset" : "login"
+  }
 }

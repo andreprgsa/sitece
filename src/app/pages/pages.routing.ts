@@ -13,6 +13,14 @@ export const routes: Routes = [
     loadChildren: 'app/login/login.module#LoginModule'
   },
   {
+    path: 'login/:message',
+    loadChildren: 'app/login/login.module#LoginModule'
+  },
+  {
+    path: 'verify-account/:token',
+    loadChildren: 'app/verifyAccount/verifyAccount.module#VerifyAccountModule'
+  },
+  {
     path: '',
     loadChildren: 'app/login/login.module#LoginModule'
   },
