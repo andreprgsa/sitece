@@ -16,7 +16,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'home',
+        path: '',
         data: {
           menu: {
             title: 'Déconnexion',

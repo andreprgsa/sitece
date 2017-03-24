@@ -83,7 +83,7 @@
 
                     <div class="form-group select">
                       <select class="form-control" id="practice" name="practice" required [(ngModel)]="registerUser.practice">
-                        <option *ngFor="let practice of practices" [value]="practice.acronym">{{practice.name}}</option>
+                        <option *ngFor="let practice of practices" [value]="practice.name">{{practice.name}}</option>
                       </select>
                       <span class="error"></span>
                     </div>                  

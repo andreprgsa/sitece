@@ -13,6 +13,7 @@ export class BaMenuItem {
 
   @Output() itemHover = new EventEmitter<any>();
   @Output() toggleSubMenu = new EventEmitter<any>();
+  @Output() logoutUser = new EventEmitter<any>();
 
   public onHoverItem($event):void {
     this.itemHover.emit($event);
@@ -22,5 +23,9 @@ export class BaMenuItem {
     $event.item = item;
     this.toggleSubMenu.emit($event);
     return false;
+  }
+
+  public onLogoutUser($event) {
+    this.logoutUser.emit($event);
   }
 }

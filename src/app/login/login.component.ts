@@ -25,22 +25,40 @@ export class Login {
   public messageTarget:string
   public resetPasswordEmail:string = null
 
+  // TODO : Déporter cela sur la base de données
   practices = [
-    {acronym: "label", name: "Practice ou Bureau"},
-    {acronym: "DET", name: "Digital & Emerging Technologies"},
-    {acronym: "CDT", name: "Cyversecurity & Digital Trust"},
-    {acronym: "IDA", name: "Infrastructure & Data Architecture"},
-    {acronym: "EUT", name: "Energy, Utilities & Transport"},
+    {name: "Digital & IT Strategy"},
+    {name: "IT & Data Architecture"},
+    {name: "Digital & Emerging Technologies"},
+    {name: "Nantes"},
+    {name: "Financial Services"},
+    {name: "Finance & Performance"},
+    {name: "Marseille"},
+    {name: "United States"},
+    {name: "UK"},
+    {name: "Switzerland Technologies"},
+    {name: "Consumer Goods & Services"},
+    {name: "Manufacturing"},
+    {name: "Energy, Utilities & Transport"},
+    {name: "Public Sector"},
+    {name: "Real Estates"},
+    {name: "People & Change"}, 
+    {name: "Cybersecurity & Digital Trust"},
+    {name: "Morocco"},
+    {name: "Luxembourg"},
+    {name: "Switzerland Financial Services"},
+    {name: "Belgium"},
+    {name: "Innovation Management & Funding"}
   ];
   
   loginUser = new LoginUser("","");
-  registerUser = new RegisterUser("","","",this.practices[0].acronym,"");
+  registerUser = new RegisterUser("","","",this.practices[0].name,"");
 
   constructor(private loginService: LoginService, private registerService: RegisterService, private router : Router, private activatedRoute: ActivatedRoute) {
-    System.import('./login.js');    
   }
 
   ngOnInit(){
+    System.import('./login.js');    
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
         this.routingMessage = params['message'];

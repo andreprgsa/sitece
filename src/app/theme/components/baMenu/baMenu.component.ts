@@ -91,5 +91,11 @@ export class BaMenu {
     }
 
     return false;
-  } 
+  }
+
+  public logoutUser($event) {
+    localStorage.clear()
+    this._router.navigate(['login']);
+  }
+
 }
