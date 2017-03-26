@@ -13,7 +13,7 @@ export const routes: Routes = [
     loadChildren: 'app/login/login.module#LoginModule'
   },
   {
-    path: 'login/:message',
+    path: 'login/:origin/:content',
     loadChildren: 'app/login/login.module#LoginModule'
   },
   {

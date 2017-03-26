@@ -34,14 +34,14 @@ export class VerifyAccount {
   public treatVerify(data) {
     console.log(data)
     switch(Number(data.status)){
-      case 200: // does not work !
-    this.router.navigate(['/login/OK']);
+      case 200: // TODO change to especific path
+    this.router.navigate(['/login/verify/OK']);
         break;
       case 0:
-    this.router.navigate(['/login/KO']);
+    this.router.navigate(['/login/verify/KO']);
         break;
       default:
-    this.router.navigate(['/login/KO']);
+    this.router.navigate(['/login/verify/KO']);
         break;
     }
   }

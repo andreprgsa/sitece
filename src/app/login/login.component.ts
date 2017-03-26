@@ -16,39 +16,45 @@ import 'style-loader!./login.scss';
 export class Login {
   public loginSubmitted:boolean = false
   public registerSubmitted:boolean = false
-  public loginOrPassReset:string = "login"
-  public routingMessage:string
+  public loginOrPassReset:string = 'login'
 
-  //TODO rationaliser
+  // Routing
+  public routingOrigin:string
+  public routingContent:string
+
+  // Messages
   public messageType:string
   public messageContent:string
   public messageTarget:string
+
+  // Reset password variabled
   public resetPasswordEmail:string = null
+  public resetPasswordPassword:string = null
 
   // TODO : Déporter cela sur la base de données
   practices = [
-    {name: "Digital & IT Strategy"},
-    {name: "IT & Data Architecture"},
-    {name: "Digital & Emerging Technologies"},
-    {name: "Nantes"},
-    {name: "Financial Services"},
-    {name: "Finance & Performance"},
-    {name: "Marseille"},
-    {name: "United States"},
-    {name: "UK"},
-    {name: "Switzerland Technologies"},
+    {name: "Belgium"},
     {name: "Consumer Goods & Services"},
-    {name: "Manufacturing"},
+    {name: "Cybersecurity & Digital Trust"},
+    {name: "Digital & Emerging Technologies"},
+    {name: "Digital & IT Strategy"},
     {name: "Energy, Utilities & Transport"},
+    {name: "Finance & Performance"},
+    {name: "Financial Services"},
+    {name: "Innovation Management & Funding"},
+    {name: "IT & Data Architecture"},
+    {name: "Luxembourg"},
+    {name: "Manufacturing"},
+    {name: "Marseille"},
+    {name: "Morocco"},
+    {name: "Nantes"},
+    {name: "People & Change"}, 
     {name: "Public Sector"},
     {name: "Real Estates"},
-    {name: "People & Change"}, 
-    {name: "Cybersecurity & Digital Trust"},
-    {name: "Morocco"},
-    {name: "Luxembourg"},
     {name: "Switzerland Financial Services"},
-    {name: "Belgium"},
-    {name: "Innovation Management & Funding"}
+    {name: "Switzerland Technologies"},
+    {name: "UK"},
+    {name: "United States"},
   ];
   
   loginUser = new LoginUser("","");
@@ -61,22 +67,40 @@ export class Login {
     System.import('./login.js');    
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
-        this.routingMessage = params['message'];
+        if(params['origin'])
+          this.routingOrigin = params['origin'];
+
+        if(params['content'])
+          this.routingContent = params['content'];
       });
 
-    switch(this.routingMessage){
-      case "OK":
-          this.messageTarget = 'login'
-          this.messageType = 'success'
-          this.messageContent = "Ton compte a été validé ! Tu peux désormais te connecter au site"        
-        break;
-      case "KO":
-          this.messageTarget = 'login'
-          this.messageType = 'error'
-          this.messageContent = "Erreur de validation de ton compte - contacte l'équipe du Site CE !"        
-        break;
-      default:
-        break;
+    if(this.routingOrigin){
+      switch(this.routingOrigin){
+        case "verify":
+            this.loginOrPassReset = 'login'
+            this.messageTarget = 'login'
+            switch(this.routingContent){
+              case 'OK':
+                this.messageType = 'success'
+                this.messageContent = "Ton compte a été validé ! Tu peux désormais te connecter au site"        
+                break
+              case 'KO':
+                this.messageType = 'error'
+                this.messageContent = "Erreur de validation de ton compte - contacte l'équipe du Site CE !"        
+                break
+              default:
+                break
+            }
+          break
+        case "forgotten":
+            this.loginOrPassReset = 'passReset'
+            this.messageTarget = 'reset-password'
+            this.messageType = 'success'
+            this.messageContent = "Quel sera ton nouveau mot de passe ?"        
+          break
+        default:
+          break
+      }
     }
   }
 
@@ -141,7 +165,7 @@ export class Login {
 
   public treatUserRegister(data) {
     switch(Number(data.status)){
-      case 201: //does not work !
+      case 201:
         this.messageTarget = 'register'
         this.messageType = 'success'
         this.messageContent = "Compte crée avec succès ! Vérifie tes mails pour le valider :)"
