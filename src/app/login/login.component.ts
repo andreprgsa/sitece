@@ -2,16 +2,18 @@ import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { LoginUser } from './login-model'
 import { RegisterUser } from './register-model'
-import { LoginService } from '../providers/auth/login.service';
-import { RegisterService } from '../providers/auth/register.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { LoginService } from '../providers/auth/login.service'
+import { RegisterService } from '../providers/auth/register.service'
+import { ResetPasswordService } from '../providers/auth/reset-password.service'
+import { ForgotPasswordService } from '../providers/auth/forgot-password.service'
+import { Router, ActivatedRoute, Params } from '@angular/router'
 
 import 'style-loader!./login.scss';
 
 @Component({
   selector: 'login',
   templateUrl: './login.html',
-  providers: [LoginService, RegisterService]
+  providers: [LoginService, RegisterService, ResetPasswordService, ForgotPasswordService]
 })
 export class Login {
   public loginSubmitted:boolean = false
@@ -60,11 +62,19 @@ export class Login {
   loginUser = new LoginUser("","");
   registerUser = new RegisterUser("","","",this.practices[0].name,"");
 
-  constructor(private loginService: LoginService, private registerService: RegisterService, private router : Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private loginService: LoginService, 
+    private registerService: RegisterService, 
+    private resetPasswordService: ResetPasswordService, 
+    private forgotPasswordService: ForgotPasswordService, 
+    private router : Router, 
+    private activatedRoute: ActivatedRoute
+    ) {
   }
 
   ngOnInit(){
     System.import('./login.js');    
+
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
         if(params['origin'])
@@ -92,7 +102,7 @@ export class Login {
                 break
             }
           break
-        case "forgotten":
+        case "reset":
             this.loginOrPassReset = 'passReset'
             this.messageTarget = 'reset-password'
             this.messageType = 'success'
@@ -146,10 +156,6 @@ export class Login {
     }
   }
 
-  public setError(error:any) {
-    console.log("error !")
-    console.log(error);
-  }
 
   public registerSubmit():void {
     this.registerSubmitted = true;
@@ -188,6 +194,87 @@ export class Login {
     }
   }
 
+
+  public resetPasswordSubmit(){
+    // Form used to reset the password
+    if(this.routingOrigin == "reset") {
+      if (this.validateForm('reset-password')) {
+        Promise.all([
+          this.resetPasswordService.resetPassword(this.routingContent, this.resetPasswordPassword)
+        ]).then(
+          data  => this.treatPasswordReset(data[0]),
+          error => this.setError(<any>error)
+        );       
+      }
+    }
+
+    // Form used to ask for a password reset
+    else {
+      if (this.validateForm('forgot-password')) {
+        Promise.all([
+          this.forgotPasswordService.forgotPassword(this.resetPasswordEmail)
+        ]).then(
+          data  => this.treatPasswordForgotten(data[0]),
+          error => this.setError(<any>error)
+        );       
+      }
+    }
+  }
+
+  public treatPasswordReset(data) {
+    switch(Number(data.status)){
+      case 200:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'success'
+        this.messageContent = "Mot de passe réinitialisé ! Tu peux désormais te connecter au site" 
+        break;
+      case 422:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'error'
+        this.messageContent = 'Le token de réinitialisation est expiré ou le compte n\'existe pas.'
+        break;
+      case 0:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'error'
+        this.messageContent = "Le service API CE Wavestone semble être hors-ligne..."
+        break;
+      default:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'error'
+        this.messageContent = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        break;
+    }
+  }
+
+  public treatPasswordForgotten(data) {
+    switch(Number(data.status)){
+      case 200:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'success'
+        this.messageContent = "Mail de réinitialisation envoyé à l\'addresse fournie !" 
+        break;
+      case 0:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'error'
+        this.messageContent = "Le service API CE Wavestone semble être hors-ligne..."
+        break;
+      default:
+        this.messageTarget = 'reset-password'
+        this.messageType = 'error'
+        this.messageContent = "Erreur inconnue ! Contacte l\'équipe du Site CE s'il te plait :)"
+        break;
+    }
+  }  
+
+  public switchLoginForm(){
+    this.loginOrPassReset = this.loginOrPassReset == "login" ? "passReset" : "login"
+  }
+
+  public setError(error:any) {
+    console.log("error !")
+    console.log(error);
+  }
+
   public validateForm(form:string):boolean {
     var errorFlag = false
     switch(form) {
@@ -211,16 +298,21 @@ export class Login {
         if(!errorFlag)
           return true
         break;
+      case 'reset-password':
+        if(this.resetPasswordPassword === "")
+          errorFlag = true
+        if(!errorFlag)
+          return true
+        break;
+      case 'forgot-password':
+        if(this.resetPasswordEmail.search("@wavestone.com") == -1 || this.resetPasswordEmail === "")
+          errorFlag = true
+        if(!errorFlag)
+          return true
+        break;
       default: 
         return false
     }
   }
 
-  public resetPasswordSubmit(){
-
-  }
-
-  public switchLoginForm(){
-    this.loginOrPassReset = this.loginOrPassReset == "login" ? "passReset" : "login"
-  }
 }

@@ -194,8 +194,11 @@ section#formHolder {
   }
 }
 
-.form form .CTA a.switch:hover {
-  color: $info;
+.form form .CTA {
+  a.switch:hover, a.switch-mdp:hover {
+    color: $info;
+    cursor: pointer;
+  }
 }
 
 .form form .error-container {
