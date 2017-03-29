@@ -11,6 +11,7 @@ export class BaContentTop {
 
   public activePageTitle:string = '';
   public isMenuCollapsed:boolean = false;
+  public menuLink:string = 'ion-chevron-right'
 
   constructor(private _state:GlobalState) {
     this._state.subscribe('menu.activeLink', (activeLink) => {
@@ -24,9 +25,15 @@ export class BaContentTop {
     });    
   }
 
-  public toggleMenu() {
+  public toggleMenu() {    
+    if(this.isMenuCollapsed)
+      this.menuLink = 'ion-close-round'
+    else
+      this.menuLink = 'ion-chevron-right'
+
     this.isMenuCollapsed = !this.isMenuCollapsed;
     this._state.notifyDataChanged('menu.isCollapsed', this.isMenuCollapsed);
+
     return false;
   }   
 }

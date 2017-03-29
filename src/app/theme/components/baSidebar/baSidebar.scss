@@ -6,6 +6,7 @@ $angle-right: "\f101";
 
 .al-sidebar {
   width: $sidebar-width;
+  transition: width 1.5s ease;
   top: 0;
   left: 0;
   z-index: 1001;
@@ -120,6 +121,7 @@ a.al-sidebar-list-link {
 @mixin layout-collapsed() {
   .al-main {
     margin-left: 50px;
+    transition: margin 1.5s ease;
   }
 
   .al-footer {
@@ -190,6 +192,7 @@ a.al-sidebar-list-link {
 @mixin sidebar-collapsed() {
   .al-sidebar {
     width: 52px;
+    transition: width 1.5s ease;
 
     .fa-angle-down, .fa-angle-up {
       opacity: 0;

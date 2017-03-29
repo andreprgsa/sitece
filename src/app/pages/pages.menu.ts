@@ -3,32 +3,6 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'profile',
-        data: {
-          menu: {
-            title: 'Prénom NOM',
-            icon: 'ion-person',
-            selected: false,
-            expanded: false,
-            isUser: "sidebar-user",
-            order: 0,
-          }
-        }
-      },
-      {
-        path: '',
-        data: {
-          menu: {
-            title: 'Déconnexion',
-            icon: 'ion-log-out',
-            selected: false,
-            expanded: false,
-            isLogout: "sidebar-logout",
-            order: 50
-          }
-        }
-      },
-      {
         path: 'home',
         data: {
           menu: {
@@ -122,6 +96,19 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Déconnexion',
+            icon: 'ion-log-out',
+            selected: false,
+            expanded: false,
+            isLogout: "sidebar-logout",
+            order: 120
+          }
+        }
+      },      
       {
         path: 'dashboard',
         data: {
