@@ -92,8 +92,6 @@
 
     &.text-message {
       font-size: 12px;
-      width: inherit;
-      max-width: calc(100% - 80px);
       height: inherit;
       min-height: 60px;
       &:before {
