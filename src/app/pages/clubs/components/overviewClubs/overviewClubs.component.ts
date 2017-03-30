@@ -26,8 +26,34 @@ export class OverviewClubs implements OnInit{
 
   onSelect(club: Club): void {
     this.selectedClub = club;
-    //this.router.navigate(['/soccerClubs']);
-    this.router.navigate(['/overviewClubs']);
+    switch (this.selectedClub.title) { //PENSER A AJOUTER LES CLUBS
+      case 'Club Soccer':
+        this.router.navigate(['/pages/clubs/soccerClubs']);
+      break;
+      case 'Club hand':
+        this.router.navigate(['/pages/clubs/handClubs']);
+      break;
+      case 'Club Basket':
+        this.router.navigate(['/pages/clubs/basketClubs']);
+      break;
+      case 'Club Running':
+        this.router.navigate(['/pages/clubs/runningClubs']);
+      break;
+      case 'Club Badminton':
+        this.router.navigate(['/pages/clubs/badmintonClubs']);
+      break;
+      case 'Club Grimp\'':
+        this.router.navigate(['/pages/clubs/grimpClubs']);
+      break;
+      case 'Club Tennis':
+        this.router.navigate(['/pages/clubs/tennisClubs']);
+      break;
+      case 'Club Musique':
+        this.router.navigate(['/pages/clubs/musicClubs']);
+      break;
+    }
+    
+   // this.router.navigate(['/overviewClubs']);
   }
 
 }
