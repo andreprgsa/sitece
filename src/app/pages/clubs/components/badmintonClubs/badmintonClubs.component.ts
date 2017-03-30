@@ -1,6 +1,7 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Club} from '../../club';
 import {ClubService} from '../../club.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'badminton-clubs', //change selon le club
@@ -13,7 +14,7 @@ export class BadmintonClubs{ //change selon le club
   clubs: Club[];
   selectedClub: Club;
 
-  constructor(private clubService: ClubService) {}
+  constructor(private router : Router, private clubService: ClubService) {}
 
   getMyClub(): void {
     this.clubService.getClubs().then(clubs => this.clubs = clubs);
@@ -21,6 +22,10 @@ export class BadmintonClubs{ //change selon le club
 
   ngOnInit(): void {
     this.getMyClub();
+  }
+
+  gotoClubs(): void {
+    this.router.navigate(['/pages/clubs/overviewClubs']);
   }
 
 }

@@ -2,6 +2,7 @@ import {Component, OnInit, ElementRef} from '@angular/core';
 import {Club} from '../../club';
 import {ClubService} from '../../club.service';
 import 'style-loader!../../clubs.scss';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'soccer-clubs',
@@ -14,7 +15,7 @@ export class SoccerClubs{
   clubs: Club[];
   selectedClub: Club;
 
-  constructor(private clubService: ClubService) {}
+  constructor(private router : Router, private clubService: ClubService) {}
 
   getMyClub(): void {
     this.clubService.getClubs().then(clubs => this.clubs = clubs);
@@ -24,4 +25,7 @@ export class SoccerClubs{
     this.getMyClub();
   }
 
+  gotoClubs(): void {
+    this.router.navigate(['/pages/clubs/overviewClubs']);
+  }
 }

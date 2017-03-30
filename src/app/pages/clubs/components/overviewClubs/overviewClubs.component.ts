@@ -30,7 +30,7 @@ export class OverviewClubs implements OnInit{
       case 'Club Soccer':
         this.router.navigate(['/pages/clubs/soccerClubs']);
       break;
-      case 'Club hand':
+      case 'Club Hand':
         this.router.navigate(['/pages/clubs/handClubs']);
       break;
       case 'Club Basket':
