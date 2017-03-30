@@ -1,1 +1,80 @@
-<p>HAND CLUBS</p>
+<div *ngFor="let club of clubs">
+	<div *ngIf="club.title.includes('Club Hand')"><!--VA CHANGER POUR CHAQUE CLUB-->
+		<div class="my-club-card">
+			<div class="my-row"><!--IMAGE DE BANNER-->
+				<img [src]="club.imgUrl" class="my-club-img">
+			</div>
+			<div class="separator"></div>
+			<div class="my-row">
+				<div class="col-md-12">
+					<div class="my-club-title">{{club.title}}</div>
+				</div>
+			</div>
+			<div class="separator"></div>
+			<div class="my-row">
+				<div class="col-md-12">
+					<div innerHtml={{club.description}} style="text-align: justify;"></div>
+				</div>
+			</div>
+			<div class="separator"></div>
+			<div class="my-row">
+				<div class="col-md-6"> <!--ELIGIBILITE-->
+					<div class="my-club-subtitle">Bénéficiaires</div>
+					<div class="separator"></div>
+					<div *ngIf="club.eligibility.includes('b')">
+						<button class="btn btn-lg disabled" style="background: #2B90F5" aria-disabled="true">CE  Bleu</button>
+					</div>
+					<div *ngIf="club.eligibility.includes('o')">
+						<button class="btn btn-lg disabled" style="background: #E28356" aria-disabled="true">CE Orange</button>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="my-club-subtitle">Tarifs d'adhésion</div>
+					<div class="separator"></div>
+					{{club.cost}} € d'adhésion.
+				</div>
+			</div>
+			<div class="separator"></div>
+			<div class="my-row">
+				<div class="col-md-6"><!--PAIEMENT-->
+					<div class="my-club-subtitle">Modalités de paiement</div>
+					<div class="separator"></div>
+					bbbbb
+				</div>
+				<div class="col-md-6"><!--INSCRIPTION-->
+					<div class="my-club-subtitle">Inscription</div>
+					<div class="separator"></div>
+					bbbbb
+				</div>
+			</div>
+			<div class="separator"></div>
+			<div class="my-row">
+				<div class="col-md-12">
+					<div class="my-club-subtitle">Contacter le {{club.title}}</div>
+				</div>
+			</div>
+			<br><br>
+			<div class="my-row">
+				<div class="col-md-12">
+					<form>
+						<div class="form-group">
+							<label for="input01">Objet du message</label>
+							<input type="text" class="form-control" id="input01" placeholder="Objet">
+						</div>
+						<div class="form-group">
+							<label for="textarea01">Message</label>
+							<textarea placeholder="Message" class="form-control" id="textarea01"></textarea>
+						</div>
+						<div class="button-wrapper">
+							<button type="submit button" class="btn btn-default">Envoyer message</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<br><br>
+		</div>
+		<div class="my-row">
+			<button (click)="gotoClubs()">Retour</button>
+		</div>
+	</div>
+</div>
