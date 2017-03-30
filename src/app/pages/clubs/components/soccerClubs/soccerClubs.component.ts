@@ -1,10 +1,11 @@
 import {Component, OnInit, ElementRef} from '@angular/core';
 import {Club} from '../../club';
-import {SoccerClubService} from './soccerClub.service';
+import {ClubService} from '../../club.service';
+import 'style-loader!../../clubs.scss';
 
 @Component({
   selector: 'soccer-clubs',
-  providers: [SoccerClubService],
+  providers: [ClubService],
   templateUrl: './soccerClubs.html'
 })
 
@@ -13,15 +14,14 @@ export class SoccerClubs{
   clubs: Club[];
   selectedClub: Club;
 
-  constructor(private soccerClubService: SoccerClubService) {}
+  constructor(private clubService: ClubService) {}
 
-  getSoccerClub(): void {
-    this.soccerClubService.getClubs().then(clubs => this.clubs = clubs);
-    //this.soccerClubService.getSoccerClub().then(club => this.selectedClub = club);
+  getMyClub(): void {
+    this.clubService.getClubs().then(clubs => this.clubs = clubs);
   }
 
   ngOnInit(): void {
-    this.getSoccerClub();
+    this.getMyClub();
   }
 
 }
