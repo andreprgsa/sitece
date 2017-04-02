@@ -289,7 +289,7 @@ export class Login {
       case 'register':
         if(this.registerUser.email.search("@wavestone.com") == -1 || this.registerUser.email === "")
           errorFlag = true
-        if(this.registerUser.password === "")
+        if(this.registerUser.password === "" || this.registerUser.password.length < 8)
           errorFlag = true
         if(this.registerUser.firstName === "" || this.registerUser.lastName === "")
           errorFlag = true
