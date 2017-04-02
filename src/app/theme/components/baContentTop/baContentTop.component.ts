@@ -22,15 +22,14 @@ export class BaContentTop {
 
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
+      if(isCollapsed)
+        this.menuLink = 'ion-chevron-right'
+      else
+        this.menuLink = 'ion-close-round'
     });    
   }
 
   public toggleMenu() {    
-    if(this.isMenuCollapsed)
-      this.menuLink = 'ion-close-round'
-    else
-      this.menuLink = 'ion-chevron-right'
-
     this.isMenuCollapsed = !this.isMenuCollapsed;
     this._state.notifyDataChanged('menu.isCollapsed', this.isMenuCollapsed);
 
