@@ -47,8 +47,8 @@ function ensureSecure(req, res, next){
   res.redirect('https://' + req.hostname + req.url);
 }
 
-app.use('/', express.static('dist', { index: false }));
+app.use(express.static('dist'))
 
 app.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, './dist/index.html'));
+    res.sendfile('index.html');
 });
