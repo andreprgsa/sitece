@@ -4,7 +4,6 @@ var https = require('https')
 var http = require('http')
 var app = express()
 var bodyParser = require('body-parser')
-var config = require('./config/main')
 var helmet = require('helmet')
 
 mongoose.connect(config.database)
