@@ -6,8 +6,6 @@ var app = express()
 var bodyParser = require('body-parser')
 var helmet = require('helmet')
 
-mongoose.connect(config.database)
-
 // Enable https 
 var privateKey = fs.readFileSync('/etc/letsencrypt/live/preproduction.ce-wavestone.fr/privkey.pem', 'utf8');
 var certificate = fs.readFileSync('/etc/letsencrypt/live/preproduction.ce-wavestone.fr/cert.pem', 'utf8');
@@ -20,7 +18,7 @@ var credentials = {
 };
 
 // Start the server
-const unsaveServer = http.createServer(app).listen(80)
+const unsaveServer = http.createServer(app).listen(80, '178.32.124.254')
 const server = https.createServer(credentials, app).listen(443,'178.32.124.254');
 console.log('Your server is running on ports 80 and 443.');  
 
