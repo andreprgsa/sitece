@@ -6,6 +6,6 @@ export var CLUBS: Club[] = [
   { id: 4, eligibility:'b', title: 'Club Running', description: 'TBD', cost:0, contactUrl: "florian.clerc@wavestone.com", imgUrl:"https://c1.staticflickr.com/4/3790/19300545790_82ac2a3444_b.jpg", category:"Sport"   },
   { id: 5, eligibility:'b', title: 'Club Badminton', description: 'TBD', cost:0, contactUrl: "alexis.pignal@wavestone.com", imgUrl:"https://c1.staticflickr.com/1/10/16172505_26ddc88d15.jpg", category:"Sport"   },
   { id: 6, eligibility:'b', title: 'Club Grimp\'', description: 'TBD', cost:0, contactUrl: "helene.roy@wavestone.com", imgUrl:"https://upload.wikimedia.org/wikipedia/commons/2/23/Rey_de_Espa%C3%B1a.jpg", category:"Sport"   },
-  { id: 7, eligibility:'b', title: 'Club Tennis', description: 'TBD', cost:0, contactUrl: "tarek.kamoun@wavestone.com", imgUrl:"http://www.publicdomainpictures.net/pictures/170000/velka/tennis-player-returns-serve.jpg", category:"Sport"   },
-  { id: 8, eligibility:'bo', title: 'Club Musique', description: 'TBD', cost:0, contactUrl: "ClubZicteam@wavestone.com", imgUrl:"http://maxpixel.freegreatpicture.com/static/photo/1x/Mixer-Microphone-Song-Music-Score-Volume-Cables-1792286.jpg", category:"Culture"   }
+  { id: 7, eligibility:'b', title: 'Club Tennis', description: 'TBD', cost:0, contactUrl: "tarek.kamoun@wavestone.com", imgUrl:"https://www.publicdomainpictures.net/pictures/170000/velka/tennis-player-returns-serve.jpg", category:"Sport"   },
+  { id: 8, eligibility:'bo', title: 'Club Musique', description: 'TBD', cost:0, contactUrl: "ClubZicteam@wavestone.com", imgUrl:"https://maxpixel.freegreatpicture.com/static/photo/1x/Mixer-Microphone-Song-Music-Score-Volume-Cables-1792286.jpg", category:"Culture"   }
 ];

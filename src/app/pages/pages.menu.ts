@@ -397,7 +397,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'External Link',
-            url: 'http://akveo.com',
+            url: 'https://akveo.com',
             icon: 'ion-android-exit',
             order: 800,
             target: '_blank'

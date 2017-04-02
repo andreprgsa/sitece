@@ -50,6 +50,6 @@ function ensureSecure(req, res, next){
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/', (req, res, next) => {
+app.get('*', (req, res, next) => {
     res.sendfile('index.html');
 });
