@@ -1,4 +1,5 @@
 var express = require('express')
+var path = require('path');
 var fs = require('fs')
 var https = require('https')
 var http = require('http')
@@ -47,8 +48,8 @@ function ensureSecure(req, res, next){
   res.redirect('https://' + req.hostname + req.url);
 }
 
-app.use(express.static('dist'))
+app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('*', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.sendfile('index.html');
 });
