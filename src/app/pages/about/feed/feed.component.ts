@@ -4,6 +4,7 @@ import {FeedService} from './feed.service';
 
 import 'style-loader!./feed.scss';
 
+
 @Component({
   selector: 'feed',
   templateUrl: './feed.html'

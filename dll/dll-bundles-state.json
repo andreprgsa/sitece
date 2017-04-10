@@ -13,27 +13,27 @@
   },
   "@angular/platform-browser": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/platform-browser-dynamic": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/core": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/common": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/forms": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/http": {
     "bundle": "vendor",
-    "version": "2.4.7"
+    "version": "2.4.10"
   },
   "@angular/router": {
     "bundle": "vendor",
